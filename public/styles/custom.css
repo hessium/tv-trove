@@ -1,0 +1,33 @@
+html, body, #__next {
+    height: 100%;
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Montserrat, sans-serif;
+    display: flex;
+    font-size: 14px;
+    flex-direction: column;
+}
+
+#__next {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 15px 0;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+main {
+    flex: 1;
+    padding-bottom:  4rem;
+}

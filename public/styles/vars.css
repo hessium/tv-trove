@@ -1,0 +1,14 @@
+:root {
+    --shadow-size: 100px;
+    --container-width: 1400px;
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: red;
+    --secondary: blue;
+}
+
+@media (max-width <= 1400) {
+    :root {
+        --container-width: 1228px;
+    }
+}

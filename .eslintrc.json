@@ -1,0 +1,153 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "unused-imports",
+    "dirs",
+    "sort-keys-fix",
+    "typescript-sort-keys",
+    "simple-import-sort",
+    "prettier",
+    "unicorn"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      }
+    }
+  },
+  "rules": {
+    // prettier
+    "prettier/prettier": "error",
+    // eslint-plugin-react
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "callbacksLast": true,
+        "ignoreCase": true,
+        "shorthandFirst": true,
+        "reservedFirst": true,
+        "multiline": "last"
+      }
+    ],
+    "react/jsx-curly-brace-presence": ["error", "never"],
+    "react/display-name": "off",
+    "react/jsx-boolean-value": ["error", "never"],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".tsx", ".jsx"]
+      }
+    ],
+    // eslint
+    "no-console": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    // eslint-plugin-unicorn
+    "unicorn/filename-case": [
+      "error",
+      {
+        "case": "kebabCase"
+      }
+    ],
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/no-null": "off",
+    "unicorn/explicit-length-check": "off",
+    "unicorn/no-array-callback-reference": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/prefer-module": "off",
+    "unicorn/prefer-node-protocol": "off",
+    // eslint-plugin-import
+    "import/no-unresolved": "off",
+    // eslint-plugin-sort-keys-fix
+    "sort-keys-fix/sort-keys-fix": [
+      "error",
+      "asc",
+      {
+        "natural": true
+      }
+    ],
+    // eslint-plugin-unused-imports
+    "unused-imports/no-unused-imports": "error",
+    // eslint-plugin-dirs
+    "dirs/dirnames": [
+      2,
+      {
+        "pattern": "^[\\[\\]a-z-]+$"
+      }
+    ],
+    // typescript
+    "typescript-sort-keys/interface": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": true,
+        "natural": false,
+        "requiredFirst": true
+      }
+    ],
+    "typescript-sort-keys/string-enum": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": true
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-var-requires": "off",
+    // jsx-a11y
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ],
+    // simple-import-sort
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^(react)(\\/.*|$)", "^(react-dom)(\\/.*|$)", "(^next)(\\/.*|$)"],
+          ["^@?\\w"],
+          [
+            "^(@/widgets)(\\/.*|$)",
+            "^(@/entities)(\\/.*|$)",
+            "^(@/features)(\\/.*|$)",
+            "^(@/shared)(\\/.*|$)"
+          ],
+          ["^(@/mocks)(\\/.*|$)"],
+          ["^\\."],
+          ["(jpe?g|png|webp|svg|avif)$"],
+          ["(css)$"]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error"
+  }
+}
