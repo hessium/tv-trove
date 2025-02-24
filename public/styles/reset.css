@@ -45,6 +45,12 @@ a {
     text-decoration: none;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     input, select, textarea {
         font-size: 16px !important; /* Обещание Safari: без масштабирования! */

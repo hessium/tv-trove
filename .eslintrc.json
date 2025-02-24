@@ -15,7 +15,8 @@
     "sort-keys-fix",
     "typescript-sort-keys",
     "prettier",
-    "unicorn"
+    "unicorn",
+    "simple-import-sort"
   ],
   "extends": [
     "next/core-web-vitals",

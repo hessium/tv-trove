@@ -5,6 +5,11 @@ export const moviesApi = {
   films: () =>
     apiRequest({
       method: 'GET',
-      url: 'films',
+      url: 'films?page=3',
+    }),
+  film: () =>
+    apiRequest({
+      method: 'GET',
+      url: 'films/301',
     }),
 };

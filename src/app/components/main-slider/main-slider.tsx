@@ -22,8 +22,9 @@ export const MainSlider = ({ data }: MainSliderProps) => {
 
   if (!data) return null;
 
+  console.log(data);
   return (
-    <div className=''>
+    <div className='main-slider__wrap'>
       <Swiper
         modules={[Thumbs, Autoplay]}
         spaceBetween={50}
@@ -31,6 +32,7 @@ export const MainSlider = ({ data }: MainSliderProps) => {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         slidesPerView={1}
+        className='main-slider'
       >
         {data.map((item: Film) => (
           <SwiperSlide
@@ -52,11 +54,11 @@ export const MainSlider = ({ data }: MainSliderProps) => {
         }}
         spaceBetween={10}
         slidesPerView={'auto'}
-        className='thumbs-slider'
+        className='main-slider-thumbs'
       >
         {data.map((item: Film) => (
           <SwiperSlide
-            className='main-slider__item--thumb'
+            className='main-slider__item--thumb main-slider__item'
             key={item.kinopoiskId}
           >
             <MainSlideThumb item={item} />

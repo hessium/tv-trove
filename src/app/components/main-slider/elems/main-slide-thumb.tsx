@@ -4,12 +4,14 @@ interface MainSlideProps {
 }
 export const MainSlideThumb = ({ item }: MainSlideProps) => {
   return (
-    <img
-      className='main-slider__img--thumb'
-      src={item?.posterUrl}
-      alt={item?.nameRu}
-      width={100}
-      height={100}
-    />
+    <div className='main-slide-thumb'>
+      <img
+        src={item?.posterUrlPreview}
+        alt={item?.nameRu}
+        width={100}
+        height={150}
+        loading='lazy'
+      />
+    </div>
   );
 };
