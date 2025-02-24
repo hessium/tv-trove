@@ -11,11 +11,9 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "unused-imports",
     "dirs",
     "sort-keys-fix",
     "typescript-sort-keys",
-    "simple-import-sort",
     "prettier",
     "unicorn"
   ],

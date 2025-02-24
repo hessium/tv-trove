@@ -1,10 +1,10 @@
 :root {
     --shadow-size: 100px;
     --container-width: 1400px;
-    --background: #0a0a0a;
+    --background: #2A2F4F;
     --foreground: #ededed;
-    --primary: red;
-    --secondary: blue;
+    --primary: #FFD700;
+    --secondary: #9400D3;
 }
 
 @media (max-width <= 1400) {

@@ -2,14 +2,14 @@ export const LINKS = {
   auth: '/auth',
   home: <T extends object>(params?: T) => buildUrl('/', { params }),
   logout: '/logout',
+  serials: '/serials',
+  movies: '/movies',
+  tv: '/tv',
+  registration: '/registration',
+  profile: '/profile',
   notAccess: '/403',
   notFound: '/404',
-  registration: '/registration',
-  sendCode: '/registration/send-code',
   serverError: '/500',
-  term: (slug: string) => `/term/${slug}`,
-  termCreate: '/term/create',
-  termUpdate: (slug?: string) => `/term/update/${slug}`,
 };
 
 function buildUrl<T extends object>(

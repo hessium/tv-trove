@@ -5,12 +5,6 @@ export type NonNullableKeys<T> = {
   [P in keyof T]: NonNullable<T[P]>;
 };
 
-export type AppMeta<T = NonNullableKeys<Metadata>> = T & {
-  canonical?: string;
-  image?: string;
-  keywords?: string;
-};
-
 export type FetchResponse<T> = Promise<ApiResponse<T>>;
 export interface ApiResponse<T> {
   data: T;
@@ -18,28 +12,64 @@ export interface ApiResponse<T> {
   status: number;
 }
 
-export type ForwardComponent<Element, Props> = Props & {
-  forwardedRef?: Ref<Element>;
-};
+interface Country {
+  country: string;
+}
 
-export type Slot<U extends string> = Partial<
-  Record<U, HTMLElement['className']>
->;
+interface Genre {
+  genre: string;
+}
 
-export type PaginationRequestProps<T> = T & {
-  limit?: number;
-  page?: number;
-  sort?: string;
-};
-
-export type FetchPaginationResponse<T> = FetchResponse<{
-  lastPage: number;
-  models: T[];
-  rowsCount: number;
-}>;
-
-export type MetaType = {
-  description: string;
-  keywords: string;
-  slug: string;
-};
+export interface Film {
+  kinopoiskId: number;
+  kinopoiskHDId: string;
+  imdbId?: string;
+  nameRu?: string;
+  nameEn?: string;
+  nameOriginal: string;
+  posterUrl: string;
+  posterUrlPreview: string;
+  coverUrl?: string;
+  logoUrl?: string;
+  reviewsCount: number;
+  ratingGoodReview?: number;
+  ratingGoodReviewVoteCount?: number;
+  ratingKinopoisk: number;
+  ratingKinopoiskVoteCount: number;
+  ratingImdb?: number;
+  ratingImdbVoteCount: number;
+  ratingFilmCritics?: number;
+  ratingFilmCriticsVoteCount?: number;
+  ratingAwait?: number;
+  ratingAwaitCount?: number;
+  ratingRfCritics?: number;
+  ratingRfCriticsVoteCount?: number;
+  webUrl: string;
+  year: number;
+  filmLength: number;
+  slogan?: string;
+  description?: string;
+  shortDescription?: string;
+  editorAnnotation?: string;
+  isTicketsAvailable: boolean;
+  productionStatus:
+    | 'POST_PRODUCTION'
+    | 'FILMING'
+    | 'PRE_PRODUCTION'
+    | 'COMPLETED'
+    | 'UNKNOWN';
+  type: 'FILM' | 'TV_SHOW' | 'TV_SERIES' | 'MINI_SERIES' | 'VIDEO';
+  ratingMpaa?: string;
+  ratingAgeLimits: string;
+  hasImax: boolean;
+  has3D: boolean;
+  lastSync: string;
+  countries: Country[];
+  genres: Genre[];
+  startYear?: number;
+  endYear?: number;
+  serial: boolean;
+  shortFilm: boolean;
+  completed: boolean;
+}
+export type FilmsResponse = Film[];

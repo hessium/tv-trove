@@ -5,6 +5,3 @@ node_modules
 
 # next
 .next
-*.js
-
-/src/shared/types/icon.ts

@@ -1,18 +1,30 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import cl from './app-header.module.scss';
+import { LINKS } from '@/app/shared/constants/links';
+import { AuthLink } from '@/app/components/auth-link/auth-link';
+import { HeaderNavigation } from '@/app/containers/app-header/elems/header-navigation';
 
 export const AppHeader = () => {
   return (
-    <header className='header'>
+    <header className={cl.header}>
       <div className='container'>
-        <Link href='/'>
-          <Image
-            src='/images/logo/logo.svg'
-            width={44}
-            height={44}
-            alt='logo tv'
-          />
-        </Link>
+        <div className={cl.header__wrapper}>
+          <div className={cl.header__row}>
+            <Link href={LINKS.home()}>
+              <Image
+                src='/images/logo/logo.svg'
+                width={44}
+                height={44}
+                alt='logo tv trove'
+              />
+            </Link>
+
+            <HeaderNavigation />
+          </div>
+
+          <AuthLink />
+        </div>
       </div>
     </header>
   );
