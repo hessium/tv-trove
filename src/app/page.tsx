@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { MainLayout } from '@/app/containers/main-layout/main-layout';
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from '@tanstack/react-query';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import { Hero } from '@/app/components/hero/hero';
 import getQueryClient from '@/app/shared/utils/get-query-client';
 import { moviesApi } from '@/app/shared/api/movies';
