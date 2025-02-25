@@ -1,6 +1,7 @@
 import { cookier } from '@/app/shared/utils/cookier';
 import { COOKIES } from '@/app/shared/constants/cookies';
 import { parseApiUrl } from '@/app/shared/utils/parse-api-url';
+import { ApiResponse } from '@/app/shared/types/globals';
 
 interface ApiRequestProps extends RequestInit {
   url: string;
@@ -10,14 +11,10 @@ interface ApiRequestProps extends RequestInit {
   slug?: string;
 }
 
-export enum HttpStatus {
-  NotAuthorized = 401,
-}
-
 export const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 export const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
-export const apiRequest = async ({
+export const apiRequest = async <T>({
   url,
   params,
   headers,
@@ -25,7 +22,7 @@ export const apiRequest = async ({
   data,
   slug,
   ...options
-}: ApiRequestProps) => {
+}: ApiRequestProps): Promise<ApiResponse<T>> => {
   try {
     const isServer = typeof document === 'undefined';
     let authToken = null;
@@ -54,10 +51,26 @@ export const apiRequest = async ({
       ...((data && { body }) as Record<string, unknown>),
       ...options,
     });
+    const responseData: ApiResponse<T> = await response.json();
 
-    return await response.json();
+    if (!response.ok) {
+      return {
+        data: null,
+        error: true,
+        status: response.status,
+        message: responseData.message || 'HTTP Error',
+      };
+    }
+
+    return responseData;
   } catch (error) {
-    // eslint-disable-next-line no-console
+    // 4. Обрабатываем только сетевые ошибки и ошибки парсинга
     console.error(error);
+    return {
+      data: null,
+      error: true,
+      status: 500,
+      message: error instanceof Error ? error.message : 'Unknown error',
+    };
   }
 };

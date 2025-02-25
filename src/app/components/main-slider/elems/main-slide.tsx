@@ -1,4 +1,6 @@
 import { Film } from '@/app/shared/types/globals';
+import { moviesApi } from '@/app/shared/api/movies';
+import { useState } from 'react';
 interface MainSlideProps {
   item: Film;
 }

@@ -32,7 +32,27 @@
   position: relative;
   display: flex;
   width: 100%;
-  aspect-ratio: 16 / 7;
+  padding-bottom: 83%;
+
+  @media screen and (min-width: 360px) {
+    padding-bottom: 87%;
+  }
+
+  @media screen and (min-width: 425px) {
+    padding-bottom: 70%;
+  }
+
+  @media screen and (min-width: 650px) {
+    padding-bottom: 60%;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 66%;
+  }
+
+  @media screen and (min-width: 960px) {
+    padding-bottom: 66vh;
+  }
 
   &:before {
     content: "";
@@ -44,6 +64,7 @@
     z-index: 1;
     border-radius: 0;
     background: linear-gradient(90deg,var(--background)  65%, transparent);
+    display: none;
   }
 
   &__content {
@@ -62,6 +83,7 @@
     gap: 24px;
     font-weight: 600;
   }
+
   &__name {
     font-size: 42px;
     font-weight: 700;
@@ -114,6 +136,7 @@
       left: 0;
       right: 0;
       z-index: 1;
+      display: none;
     }
 
     &:after {

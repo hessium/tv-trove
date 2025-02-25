@@ -1,16 +1,11 @@
-import type { Metadata } from 'next';
-import type { Ref } from 'react';
-
-export type NonNullableKeys<T> = {
-  [P in keyof T]: NonNullable<T[P]>;
-};
-
-export type FetchResponse<T> = Promise<ApiResponse<T>>;
 export interface ApiResponse<T> {
-  data: T;
+  data: T | null;
   error: boolean;
   status: number;
+  message?: string;
 }
+
+export type FetchResponse<T> = Promise<ApiResponse<T>>;
 
 interface Country {
   country: string;
@@ -72,4 +67,13 @@ export interface Film {
   shortFilm: boolean;
   completed: boolean;
 }
-export type FilmsResponse = Film[];
+
+export type FilmsProps = Film[];
+
+export interface PaginatedResponse {
+  items: Film[];
+  totalPages: number;
+  total: number;
+}
+
+export type FilmsResponse = FetchResponse<PaginatedResponse>;

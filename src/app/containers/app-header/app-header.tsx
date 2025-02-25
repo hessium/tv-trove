@@ -4,6 +4,7 @@ import cl from './app-header.module.scss';
 import { LINKS } from '@/app/shared/constants/links';
 import { AuthLink } from '@/app/components/auth-link/auth-link';
 import { HeaderNavigation } from '@/app/containers/app-header/elems/header-navigation';
+import { moviesApi } from '@/app/shared/api/movies';
 
 export const AppHeader = () => {
   return (

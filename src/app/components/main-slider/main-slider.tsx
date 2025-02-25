@@ -5,7 +5,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/autoplay';
 
 import '@/app/components/main-slider/main-slider.scss';
-import { Film, FilmsResponse } from '@/app/shared/types/globals';
+import { Film, FilmsProps } from '@/app/shared/types/globals';
 import { MainSlide } from '@/app/components/main-slider/elems/main-slide';
 import { MainSlideThumb } from '@/app/components/main-slider/elems/main-slide-thumb';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,7 +14,7 @@ import { useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 
 interface MainSliderProps {
-  data: FilmsResponse;
+  data: FilmsProps;
 }
 
 export const MainSlider = ({ data }: MainSliderProps) => {
@@ -22,7 +22,6 @@ export const MainSlider = ({ data }: MainSliderProps) => {
 
   if (!data) return null;
 
-  console.log(data);
   return (
     <div className='main-slider__wrap'>
       <Swiper

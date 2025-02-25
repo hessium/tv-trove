@@ -1,15 +1,16 @@
 import { apiRequest } from '@/app/shared/api/api-request';
-import { ApiResponse } from '@/app/shared/types/globals';
-
+import { FetchResponse, Film, FilmsResponse } from '@/app/shared/types/globals';
 export const moviesApi = {
-  films: () =>
-    apiRequest({
-      method: 'GET',
-      url: 'films?page=3',
-    }),
   film: () =>
     apiRequest({
-      method: 'GET',
-      url: 'films/301',
+      url: '/films/301',
+    }),
+  films: (): FilmsResponse =>
+    apiRequest({
+      url: '/films',
+    }),
+  videos: (id: number) =>
+    apiRequest({
+      url: `/films/${id}/videos`,
     }),
 };

@@ -1,15 +1,24 @@
 'use client';
+
 import { moviesApi } from '@/app/shared/api/movies';
 import { useQuery } from '@tanstack/react-query';
 import { MainSlider } from '@/app/components/main-slider/main-slider';
 
 export const Hero = () => {
-  const { data, isLoading, isError } = useQuery({
+  const { data } = useQuery({
     queryKey: ['films'],
-    queryFn: moviesApi.films,
+    queryFn: () => moviesApi.films().then((res) => res.data),
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error fetching data</div>;
-  return <MainSlider data={data?.items} />;
+  console.log(data);
+  if (!data) return null;
+
+  return (
+    <div>
+      {data.items.map((el) => (
+        <div key={el.kinopoiskId}>{el.nameRu}</div>
+      ))}
+      <MainSlider data={data.items} />
+    </div>
+  );
 };
