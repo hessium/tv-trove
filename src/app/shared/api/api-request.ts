@@ -14,7 +14,7 @@ interface ApiRequestProps extends RequestInit {
 export const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 export const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
-export const apiRequest = async <T>({
+export const apiRequest = async ({
   url,
   params,
   headers,
@@ -22,7 +22,7 @@ export const apiRequest = async <T>({
   data,
   slug,
   ...options
-}: ApiRequestProps): Promise<ApiResponse<T>> => {
+}: ApiRequestProps) => {
   try {
     const isServer = typeof document === 'undefined';
     let authToken = null;
@@ -51,14 +51,13 @@ export const apiRequest = async <T>({
       ...((data && { body }) as Record<string, unknown>),
       ...options,
     });
-    const responseData: ApiResponse<T> = await response.json();
+    const responseData = await response.json();
 
     if (!response.ok) {
       return {
         data: null,
         error: true,
         status: response.status,
-        message: responseData.message || 'HTTP Error',
       };
     }
 
@@ -70,7 +69,6 @@ export const apiRequest = async <T>({
       data: null,
       error: true,
       status: 500,
-      message: error instanceof Error ? error.message : 'Unknown error',
     };
   }
 };

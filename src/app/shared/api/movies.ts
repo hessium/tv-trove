@@ -1,5 +1,6 @@
 import { apiRequest } from '@/app/shared/api/api-request';
-import { FetchResponse, Film, FilmsResponse } from '@/app/shared/types/globals';
+import { FilmsResponse } from '@/app/shared/types/films';
+
 export const moviesApi = {
   film: () =>
     apiRequest({

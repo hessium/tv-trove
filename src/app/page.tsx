@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { MainLayout } from '@/app/containers/main-layout/main-layout';
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import { Hero } from '@/app/components/hero/hero';
 import getQueryClient from '@/app/shared/utils/get-query-client';
@@ -16,15 +15,13 @@ export default async function Page() {
 
   await queryClient.prefetchQuery({
     queryKey: ['films'],
-    queryFn: () => moviesApi.films().then((res) => res.data),
+    queryFn: moviesApi.films,
   });
 
   const dehydratedState = dehydrate(queryClient);
   return (
     <HydrationBoundary state={dehydratedState}>
-      <MainLayout>
-        <Hero />
-      </MainLayout>
+      <Hero />
     </HydrationBoundary>
   );
 }

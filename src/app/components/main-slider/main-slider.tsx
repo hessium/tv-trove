@@ -3,15 +3,15 @@ import 'swiper/css/thumbs';
 import 'swiper/css/navigation';
 import 'swiper/css/free-mode';
 import 'swiper/css/autoplay';
-
 import '@/app/components/main-slider/main-slider.scss';
-import { Film, FilmsProps } from '@/app/shared/types/globals';
+
 import { MainSlide } from '@/app/components/main-slider/elems/main-slide';
 import { MainSlideThumb } from '@/app/components/main-slider/elems/main-slide-thumb';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Thumbs } from 'swiper/modules';
 import { useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
+import { Film, FilmsProps } from '@/app/shared/types/films';
 
 interface MainSliderProps {
   data: FilmsProps;

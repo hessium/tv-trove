@@ -7,17 +7,13 @@ import { MainSlider } from '@/app/components/main-slider/main-slider';
 export const Hero = () => {
   const { data } = useQuery({
     queryKey: ['films'],
-    queryFn: () => moviesApi.films().then((res) => res.data),
+    queryFn: moviesApi.films,
   });
 
-  console.log(data);
-  if (!data) return null;
+  if (!data?.items) return null;
 
   return (
     <div>
-      {data.items.map((el) => (
-        <div key={el.kinopoiskId}>{el.nameRu}</div>
-      ))}
       <MainSlider data={data.items} />
     </div>
   );
