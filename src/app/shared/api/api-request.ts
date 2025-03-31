@@ -1,7 +1,6 @@
 import { cookier } from '@/app/shared/utils/cookier';
 import { COOKIES } from '@/app/shared/constants/cookies';
 import { parseApiUrl } from '@/app/shared/utils/parse-api-url';
-import { ApiResponse } from '@/app/shared/types/globals';
 
 interface ApiRequestProps extends RequestInit {
   url: string;
@@ -63,8 +62,6 @@ export const apiRequest = async ({
 
     return responseData;
   } catch (error) {
-    // 4. Обрабатываем только сетевые ошибки и ошибки парсинга
-    console.error(error);
     return {
       data: null,
       error: true,

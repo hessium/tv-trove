@@ -19,6 +19,7 @@ input[type='number'] {
         clip-path: inset(1px)
     }
 }
+
 /* EmailAutocompleteInput autocomplete */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

@@ -9,6 +9,7 @@ body {
     display: flex;
     font-size: 14px;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 #__next {
@@ -29,5 +30,29 @@ body {
 
 main {
     flex: 1;
-    padding-bottom:  4rem;
+    padding-bottom: 4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
+
+.swiper {
+    position: relative;
+    display: flex;
+    width: auto;
+    max-width: unset;
+    flex-wrap: nowrap;
+}
+
+.visually-hidden {
+    display: none;
+}
+
+.fade {
+    animation:  pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }

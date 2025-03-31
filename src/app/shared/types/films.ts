@@ -1,4 +1,4 @@
-import { PaginatedResponse } from '@/app/shared/types/globals';
+import { ApiResponse } from '@/app/shared/types/globals';
 
 interface Country {
   country: string;
@@ -10,7 +10,7 @@ interface Genre {
 
 export interface Film {
   kinopoiskId: number;
-  kinopoiskHDId: string;
+  kinopoiskHDId?: string;
   imdbId?: string;
   nameRu?: string;
   nameEn?: string;
@@ -40,7 +40,7 @@ export interface Film {
   shortDescription?: string;
   editorAnnotation?: string;
   isTicketsAvailable: boolean;
-  productionStatus:
+  productionStatus?:
     | 'POST_PRODUCTION'
     | 'FILMING'
     | 'PRE_PRODUCTION'
@@ -61,6 +61,15 @@ export interface Film {
   completed: boolean;
 }
 
-export type FilmsProps = Film[];
+export type FilmsResponse = Promise<ApiResponse<Film>>;
 
-export type FilmsResponse = Promise<PaginatedResponse<Film>>;
+export interface TrailerItem {
+  url: string;
+  name: string;
+  site: string;
+}
+
+export interface TrailerResponse {
+  total: number;
+  items: TrailerItem[];
+}
