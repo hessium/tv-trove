@@ -1,42 +1,40 @@
-.hero {
-  &__slider {
-
+.main-slider {
+  &__main {
     &-thumbs {
-     padding: 0 16px;
-    }
-
-    &-wrap {
-      margin: 0 -15px;
-    }
-
-    &-item {
-      width: 100%;
-      overflow: hidden;
-
-      &--thumb {
-        width: 100px;
-
-        @media screen and (min-width: 768px) {
-          width: 150px;
-        }
-      }
-
-      & img {
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        image-rendering: -o-crisp-edges;
-        image-rendering: -moz-crisp-edges;
-        image-rendering: -webkit-optimize-contrast;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+      padding: 0 16px;
     }
   }
 
-  &__animate {
+  &__container {
+    margin: 0 -15px;
+  }
 
+  &__slide {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__thumbnail {
+    width: 100px;
+
+    @media screen and (min-width: 768px) {
+      width: 150px;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      image-rendering: -o-crisp-edges;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  }
+
+  &__skeleton {
     &-wrap {
       margin: 0 -15px;
     }
@@ -44,7 +42,6 @@
     &-item {
       width: 100px;
       height: 150px;
-     
       background-color: gray;
       border-radius: 20px;
 
@@ -81,14 +78,14 @@
   }
 }
 
-.hero-slide {
+.main-slide {
   position: relative;
   display: flex;
   width: 100%;
   padding-bottom: 83%;
 
   &__video {
-    width:100%;
+    width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
@@ -103,7 +100,6 @@
     border-radius: 20px;
     border: 3px solid transparent;
     margin-bottom: 3px;
-
 
     @media screen and (min-width: 768px) {
       height: 200px;
@@ -213,7 +209,7 @@
   }
 
   &__img {
-    width:100%;
+    width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
@@ -247,7 +243,7 @@
 }
 
 .swiper-slide-thumb-active {
-  & .hero-slide__thumb {
-    border-color:  var(--primary);
+  & .main-slide__thumb {
+    border-color: var(--primary);
   }
 }

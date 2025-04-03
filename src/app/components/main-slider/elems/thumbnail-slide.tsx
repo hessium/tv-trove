@@ -1,9 +1,10 @@
 import { Film } from '@/app/shared/types/films';
 
-interface MainSlideProps {
+interface ThumbnailSlideProps {
   item: Film;
 }
-export const HeroSlideThumb = ({ item }: MainSlideProps) => {
+
+export const ThumbnailSlide = ({ item }: ThumbnailSlideProps) => {
   return (
     <div className='hero-slide__thumb'>
       <img

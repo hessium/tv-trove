@@ -18,6 +18,7 @@ export const AppHeader = () => {
                 width={44}
                 height={44}
                 alt='logo tv trove'
+                priority
               />
             </Link>
 

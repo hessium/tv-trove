@@ -9,7 +9,7 @@ interface MainSlideProps {
   isActive?: boolean;
 }
 
-export const HeroSlide = ({ item, trailer, isActive = false }: MainSlideProps) => {
+export const MainSlide = ({ item, trailer, isActive = false }: MainSlideProps) => {
   const trailerId = trailer?.url
     ? getYoutubeVideoId(trailer?.url)?.toString()
     : null;
