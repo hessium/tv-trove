@@ -1,0 +1,17 @@
+.main-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 4rem;
+
+  &__list {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__item {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1920 / 615;
+  }
+}

@@ -8,7 +8,7 @@ export interface HomePageData {
   topAnimation: FilmsResponse;
 }
 
-export async function fetchHomePageData(): Promise<HomePageData> {
+export async function useHomePage(): Promise<HomePageData> {
   const [topPopular, topFilms, topSeries, topAnimation] = await Promise.all([
     moviesApi.topPopular(),
     moviesApi.topFilms(),
@@ -22,4 +22,4 @@ export async function fetchHomePageData(): Promise<HomePageData> {
     topSeries,
     topAnimation,
   };
-} 
+}

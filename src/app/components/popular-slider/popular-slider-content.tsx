@@ -1,15 +1,21 @@
+'use client';
+
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import './popular-slider.scss';
+
+import Link from 'next/link';
 import { Film } from '@/app/shared/types/films';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Link from 'next/link';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
 
 interface PopularSliderContentProps {
   title: string;
   list?: Film[];
 }
 
-export const PopularSliderContent = ({ list, title }: PopularSliderContentProps) => {
+const PopularSliderContent = ({ list, title }: PopularSliderContentProps) => {
   if (list === undefined || list.length === 0) return null;
 
   return (
@@ -17,7 +23,7 @@ export const PopularSliderContent = ({ list, title }: PopularSliderContentProps)
       <h2 className='popular-slider__title'>{title}</h2>
 
       <Swiper
-        spaceBetween={32}
+        modules={[Navigation, Pagination, A11y]}
         slidesPerView={'auto'}
         className='popular-slider'
       >
@@ -41,10 +47,13 @@ export const PopularSliderContent = ({ list, title }: PopularSliderContentProps)
                   role='presentation'
                 />
               </div>
+              <h3>{item.nameRu || item.nameEn}</h3>
             </Link>
           </SwiperSlide>
         ))}
       </Swiper>
     </section>
   );
-}; 
+};
+
+export { PopularSliderContent };

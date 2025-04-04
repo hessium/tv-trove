@@ -1,11 +1,6 @@
 'use client';
-import 'swiper/css';
-import './popular-slider.scss';
-import { Suspense } from 'react';
-
 import { Film } from '@/app/shared/types/films';
-import { SliderSkeleton } from '@/app/components/ui/skeleton/slider-skeleton';
-import { PopularSliderContent } from './popular-slider-content';
+import { PopularSliderDynamic } from '@/app/components/popular-slider/popular-slider.dynamic';
 
 interface PopularSliderProps {
   title: string;
@@ -14,11 +9,9 @@ interface PopularSliderProps {
 
 export const PopularSlider = ({ title, list }: PopularSliderProps) => {
   return (
-    <Suspense fallback={<SliderSkeleton />}>
-      <PopularSliderContent
-        title={title}
-        list={list}
-      />
-    </Suspense>
+    <PopularSliderDynamic
+      title={title}
+      list={list}
+    />
   );
 };

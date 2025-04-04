@@ -31,16 +31,13 @@
   }
 
   &__thumbnail {
-    width: 100px;
-    height: auto;
-    aspect-ratio:  762 / 953;
-    cursor: pointer;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 3px solid transparent;
-    
-    @media (min-width: 980px) {
+    &.swiper-slide {
       width: 150px;
+      height: 200px;
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 3px solid transparent;
     }
 
     &.swiper-slide-thumb-active {
