@@ -10,54 +10,48 @@ import { useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Thumbs } from 'swiper/modules';
-import { Film, TrailerItem } from '@/app/shared/types/films';
+import { Film } from '@/app/shared/types/films';
 import Link from 'next/link';
 import { MainSlide } from '@/app/components/main-slider/elems/main-slide';
 import { ThumbnailSlide } from '@/app/components/main-slider/elems/thumbnail-slide';
 
 interface MainSliderProps {
-  trailers: (TrailerItem | undefined)[];
-  films: Film[];
+  list: Film[] | undefined;
 }
 
-export const MainSlider = ({ trailers, films }: MainSliderProps) => {
+export const MainSlider = ({ list }: MainSliderProps) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
 
-  if (!films?.length) return null;
+  if (!list?.length) return null;
 
   return (
     <section className='main-slider'>
       <div className='main-slider__container'>
         <Swiper
           modules={[Thumbs, Autoplay]}
-          spaceBetween={50}
+          spaceBetween={0}
           thumbs={{
             swiper:
               thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
           slidesPerView={1}
           className='main-slider__main'
-          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
           autoplay={{
             delay: 10000,
             disableOnInteraction: false,
           }}
         >
-          {films.map((item: Film, index: number) => (
+          {list.map((item: Film) => (
             <SwiperSlide
               className='main-slider__slide'
               key={item.kinopoiskId}
             >
               <Link
+                className='main-slider__link'
                 href={`/films/${item.kinopoiskId}`}
                 aria-label={`Перейти к фильму ${item.nameRu}`}
               >
-                <MainSlide
-                  item={item}
-                  trailer={trailers[index]}
-                  isActive={index === activeIndex}
-                />
+                <MainSlide item={item} />
               </Link>
             </SwiperSlide>
           ))}
@@ -74,9 +68,8 @@ export const MainSlider = ({ trailers, films }: MainSliderProps) => {
           spaceBetween={10}
           slidesPerView={'auto'}
           className='main-slider__thumbnails'
-          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
         >
-          {films.map((item: Film) => (
+          {list.map((item: Film) => (
             <SwiperSlide
               className='main-slider__thumbnail'
               key={`${item.kinopoiskId}-thumb`}

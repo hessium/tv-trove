@@ -6,5 +6,5 @@ export const metadata: Metadata = {
   keywords: ['tv', 'movies', 'serial'],
 };
 export default function Page() {
-  return <div>FilmsResponseA</div>;
+  return <div></div>;
 }

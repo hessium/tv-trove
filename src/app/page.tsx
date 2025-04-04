@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
-import { MainSlider } from './components/main-slider/main-slider';
 import getQueryClient from '@/app/shared/utils/get-query-client';
-import { FILMS } from '@/app/shared/constants/top-films';
-import { moviesApi } from '@/app/shared/api/movies';
-import { useMainSliderData } from '@/app/shared/hooks/use-main-slider-data';
+import { MainSlider } from '@/app/components/main-slider/main-slider';
+import { PopularSlider } from '@/app/components/popular-slider/popular-slider';
+import { SliderSkeleton } from '@/app/components/ui/skeleton/slider-skeleton';
+import { fetchHomePageData } from '@/app/shared/hooks/pages/use-home-page';
 
 export const metadata: Metadata = {
   title: 'TV Trove',
@@ -14,32 +15,35 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const queryClient = getQueryClient();
-  const { films, trailers } = await useMainSliderData(FILMS.top);
 
+  // Предварительно загружаем данные для кэширования
   await queryClient.prefetchQuery({
-    queryKey: ['films', FILMS.top],
-    queryFn: () => moviesApi.filmsByIds(FILMS.top),
+    queryKey: ['home-page'],
+    queryFn: fetchHomePageData,
   });
 
-  await queryClient.prefetchQuery({
-    queryKey: ['trailers', FILMS.top],
-    queryFn: async () => {
-      const trailersResponse = await Promise.all(
-        FILMS.top.map((id) => moviesApi.videos(id)),
-      );
-      return trailersResponse.map((response) =>
-        response.items?.find((item) => item.site === 'YOUTUBE'),
-      );
-    },
-  });
+  // Получаем данные для начального рендеринга
+  const data = await fetchHomePageData();
 
   const dehydratedState = dehydrate(queryClient);
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <MainSlider
-        trailers={trailers}
-        films={films}
+      <h1 className='visually-hidden'>Добро пожаловать на сайт TV Trove!</h1>
+      <Suspense fallback={<SliderSkeleton />}>
+        <MainSlider list={data.topPopular.items} />
+      </Suspense>
+      <PopularSlider
+        title={'Топ фильмов'}
+        list={data.topFilms.items}
+      />
+      <PopularSlider
+        title={'Топ сериалов'}
+        list={data.topSeries.items}
+      />
+      <PopularSlider
+        title={'Топ мультиков'}
+        list={data.topAnimation.items}
       />
     </HydrationBoundary>
   );

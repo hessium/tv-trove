@@ -1,47 +1,36 @@
 import { apiRequest } from '@/app/shared/api/api-request';
-import { Film, FilmsResponse, TrailerResponse } from '@/app/shared/types/films';
-import {
-  FetchResponse,
-} from '@/app/shared/types/globals';
+import { FilmsResponse, TrailerResponse } from '@/app/shared/types/films';
 
 export const moviesApi = {
   film: (id: number) =>
     apiRequest({
       url: `/films/${id}`,
     }),
-  films: (): FilmsResponse =>
+  topPopular: async (): Promise<FilmsResponse> =>
     apiRequest({
-      url: '/films',
+      url: `/films/collections?type=TOP_POPULAR_ALL&page=1`,
     }),
-  filmsByIds: async (ids: number[]): FetchResponse<Film> => {
-    try {
-      const responses = await Promise.all(
-        ids.map((id) =>
-          apiRequest({
-            url: `/films/${id}`,
-          }),
-        ),
-      );
-
-      const validFilms: Film[] = responses.filter(
-        (response): response is Film => !(response as any).error,
-      );
-
-      return {
-        data: validFilms,
-        error: false,
-        status: 200,
-      };
-    } catch (error) {
-      return {
-        data: [],
-        error: true,
-        status: 402,
-      };
-    }
-  },
+  topFilms: async (): Promise<FilmsResponse> =>
+    apiRequest({
+      url: `/films/collections?type=TOP_POPULAR_MOVIES&page=1`,
+    }),
+  topSeries: async (): Promise<FilmsResponse> =>
+    apiRequest({
+      url: `/films/collections?type=POPULAR_SERIES&page=1`,
+    }),
+  topAnimation: async (): Promise<FilmsResponse> =>
+    apiRequest({
+      url: `/films/collections?type=KIDS_ANIMATION_THEME&page=1`,
+    }),
   videos: async (id: number): Promise<TrailerResponse> =>
     apiRequest({
       url: `/films/${id}/videos`,
+    }),
+  premiers: async (premiersDate: {
+    year: number;
+    month: string;
+  }): Promise<FilmsResponse> =>
+    apiRequest({
+      url: `/films/premieres?year=${premiersDate.year}&month=${premiersDate.month}`,
     }),
 };

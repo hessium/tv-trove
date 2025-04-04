@@ -1,5 +1,3 @@
-import { ApiResponse } from '@/app/shared/types/globals';
-
 interface Country {
   country: string;
 }
@@ -8,7 +6,7 @@ interface Genre {
   genre: string;
 }
 
-export interface Film {
+export interface DetailFilm {
   kinopoiskId: number;
   kinopoiskHDId?: string;
   imdbId?: string;
@@ -61,8 +59,6 @@ export interface Film {
   completed: boolean;
 }
 
-export type FilmsResponse = Promise<ApiResponse<Film>>;
-
 export interface TrailerItem {
   url: string;
   name: string;
@@ -72,4 +68,29 @@ export interface TrailerItem {
 export interface TrailerResponse {
   total: number;
   items: TrailerItem[];
+}
+
+export interface Film {
+  kinopoiskId: number;
+  imdbId: number;
+  nameRu: string;
+  nameEn: string;
+  nameOriginal: string;
+  countries: Country[];
+  genres: Genre[];
+  ratingKinopoisk: number;
+  ratingImdb: number;
+  year: number;
+  type: string;
+  posterUrl: string;
+  posterUrlPreview: string;
+  coverUrl?: string;
+  logoUrl?: string;
+  description: string;
+  ratingAgeLimits: string;
+}
+
+export interface FilmsResponse {
+  total: number;
+  items: Film[];
 }

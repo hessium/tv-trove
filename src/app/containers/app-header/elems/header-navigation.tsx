@@ -1,5 +1,4 @@
 'use client';
-
 import cl from '@/app/containers/app-header/app-header.module.scss';
 import { cn } from '@/app/shared/utils/cn';
 import Link from 'next/link';
@@ -33,9 +32,9 @@ export const HeaderNavigation = () => {
           <Link
             className={cn(
               cl.navigation__link,
-              pathname === LINKS.movies ? cl.navigation__link_active : '',
+              pathname === LINKS.films ? cl.navigation__link_active : '',
             )}
-            href={LINKS.movies}
+            href={LINKS.films}
           >
             <Icon
               name='common/movie'
@@ -65,16 +64,16 @@ export const HeaderNavigation = () => {
           <Link
             className={cn(
               cl.navigation__link,
-              pathname === LINKS.tv ? cl.navigation__link_active : '',
+              pathname === LINKS.premiers ? cl.navigation__link_active : '',
             )}
-            href={LINKS.tv}
+            href={LINKS.premiers}
           >
             <Icon
               name='common/tv'
               width='24'
               height='24'
             />
-            <span>Тв-шоу</span>
+            <span>Премьеры</span>
           </Link>
         </li>
       </ul>

@@ -1,5 +1,5 @@
 html, body, #__next {
-    height: 100%;
+    min-height: 100vh;
 }
 
 body {
@@ -21,8 +21,11 @@ body {
     padding: 15px 0;
 }
 
+section {
+    padding-bottom: 4rem;
+}
+
 .container {
-    max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 1rem;
     width: 100%;
@@ -30,29 +33,25 @@ body {
 
 main {
     flex: 1;
-    padding-bottom: 4rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
 }
 
 .swiper {
-    position: relative;
-    display: flex;
-    width: auto;
-    max-width: unset;
+    width: 100%;
     flex-wrap: nowrap;
+    overflow: initial !important;
 }
 
 .visually-hidden {
     display: none;
+
 }
 
 .fade {
-    animation:  pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes pulse {
     50% {
-      opacity: 0.5;
+        opacity: 0.5;
     }
-  }
+}

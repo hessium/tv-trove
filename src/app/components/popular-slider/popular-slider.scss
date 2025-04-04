@@ -1,0 +1,26 @@
+.popular-slider {
+  padding-left: 1rem;
+
+  &__title {
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+  }
+
+  &__item {
+    width: 150px;
+    aspect-ratio:  762 / 953;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all .3s linear;
+
+    @media (min-width: 980px) {
+      width: 200px;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

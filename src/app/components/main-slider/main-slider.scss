@@ -1,109 +1,132 @@
 .main-slider {
-  &__main {
-    &-thumbs {
-      padding: 0 16px;
-    }
-  }
+  width: 100%;
+  overflow: hidden;
 
   &__container {
-    margin: 0 -15px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
   }
 
-  &__slide {
+  &__main {
     width: 100%;
     overflow: hidden;
   }
 
+  &__slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  &__link {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  &__thumbnails {
+    padding: 0 0 0 1rem;
+  }
+
   &__thumbnail {
     width: 100px;
-
-    @media screen and (min-width: 768px) {
+    height: auto;
+    aspect-ratio:  762 / 953;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    
+    @media (min-width: 980px) {
       width: 150px;
     }
 
-    & img {
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      image-rendering: -o-crisp-edges;
-      image-rendering: -moz-crisp-edges;
-      image-rendering: -webkit-optimize-contrast;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-  }
-
-  &__skeleton {
-    &-wrap {
-      margin: 0 -15px;
-    }
-
-    &-item {
-      width: 100px;
-      height: 150px;
-      background-color: gray;
-      border-radius: 20px;
-
-      @media screen and (min-width: 768px) {
-        width: 150px;
-        height: 200px;
-      }
-    
-      &--big {
-        width: 100%;
-        height: 66vh;
-        border-radius: 0;
-        position: relative;
-
-        &:after {
-          content: "";
-          position: absolute;
-          left: 0;
-          right: 0;
-          z-index: 1;
-          top: 50%;
-          bottom: 0;
-          background: linear-gradient(0deg, var(--background) 10%, transparent);
-        }
-      }
-    }
-
-    &-list {
-      display: flex;
-      overflow-x: hidden;
-      gap: 8px;
-      padding: 24px 16px 0;
+    &.swiper-slide-thumb-active {
+      border-color: var(--primary);
     }
   }
 }
 
 .main-slide {
   position: relative;
-  display: flex;
   width: 100%;
-  padding-bottom: 83%;
+  height: 100%;
 
-  &__video {
+  &__cover {
     width: 100%;
     height: 100%;
+    overflow: hidden;
     position: absolute;
     top: 0;
-    z-index: 1;
-    user-select: none;
-    pointer-events: none;
+    left: 0;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 80%;
+      left: 0;
+      right: 0;
+      z-index: 11;
+      border-radius: 0;
+      background: linear-gradient(180deg, var(--background) , transparent);
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 0;
+      background: linear-gradient(0deg, var(--background) 24px, transparent);
+      z-index: 11;
+    }
   }
 
-  &__thumb {
-    height: 150px;
-    overflow: hidden;
-    border-radius: 20px;
-    border: 3px solid transparent;
-    margin-bottom: 3px;
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 
-    @media screen and (min-width: 768px) {
-      height: 200px;
+    @media (min-width: 768px) {
+      width: 75%;
+      margin-left: auto;
     }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 1rem 1.2rem;
+    z-index: 12;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  &__rating {
+    padding: 5px 7px;
+    border-radius: 5px;
+    background-color: hsla(0, 0%, 100%, .1);
   }
 
   @media screen and (min-width: 360px) {
@@ -112,10 +135,6 @@
 
   @media screen and (min-width: 425px) {
     padding-bottom: 70%;
-  }
-
-  @media screen and (min-width: 650px) {
-    padding-bottom: 60%;
   }
 
   @media screen and (min-width: 768px) {
@@ -133,112 +152,32 @@
     bottom: 0;
     left: 0;
     right: 55%;
-    z-index: 1;
     border-radius: 0;
     background: linear-gradient(90deg,var(--background)  65%, transparent);
     display: none;
+    z-index: 11;
 
     @media (min-width: 768px) {
       display: block;
     }
   }
+}
 
-  &__content {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 4;
-    padding-right: 16px;
-    padding-left: 16px;
-    padding-bottom: 24px;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 20px;
-  }
+.thumbnail-slide {
+  width: 100%;
+  height: 100%;
+  transition: all .3s linear;
 
-  &__bottom {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    font-weight: 600;
-  }
-
-  &__name {
-    font-size: 24px;
-    font-weight: 700;
-
-    @media (min-width: 768px) {
-      font-size: 42px;
-    }
-  }
-
-  &__rating {
-    padding: 5px 7px;
-    border-radius: 5px;
-    background-color: hsla(0, 0%, 100%, .1);
-  }
-
-  &__text {
-    position: relative;
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: -14px;
-      z-index: 99;
-      background: hsla(0, 0%, 100%, .3);
-      height: 4px;
-      width: 4px;
-      border-radius: 50%;
-    }
-
-    &:last-child {
-      &:after {
-        display: none;
-      }
-    }
-
-    &--upper {
-      text-transform: capitalize;
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
     }
   }
 
   &__img {
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 0;
-
-    &:after, &:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      z-index: 1;
-    }
-
-    &:after {
-      top: 50%;
-      bottom: 0;
-      background: linear-gradient(0deg, var(--background) 10%, transparent);
-    }
-
-    &:before {
-      display: none;
-      top: 0;
-      bottom: 80%;
-      background: linear-gradient(180deg, var(--background) 10%, transparent);
-    }
-
-    & img {
-      object-fit: cover;
-    }
+    object-fit: cover;
   }
 }
 

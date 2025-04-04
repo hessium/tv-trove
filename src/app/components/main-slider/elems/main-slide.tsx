@@ -1,59 +1,41 @@
-import { Film, TrailerItem } from '@/app/shared/types/films';
+import { Film } from '@/app/shared/types/films';
 import { removeAgeString } from '@/app/shared/utils/remove-age-string';
-import { DynamicYoutubePlayer } from '@/app/shared/ui/player/youtube-player.dymanic';
-import { getYoutubeVideoId } from '@/app/shared/utils/get-youtube-video-id';
 
 interface MainSlideProps {
   item: Film;
-  trailer?: TrailerItem;
-  isActive?: boolean;
 }
 
-export const MainSlide = ({ item, trailer, isActive = false }: MainSlideProps) => {
-  const trailerId = trailer?.url
-    ? getYoutubeVideoId(trailer?.url)?.toString()
-    : null;
-
+export const MainSlide = ({ item }: MainSlideProps) => {
   return (
-    <div className='hero-slide'>
-      <div className='hero-slide__img'>
+    <div className='main-slide'>
+      <div className='main-slide__cover'>
         <img
-          src={item?.coverUrl}
-          alt={item?.nameRu}
+          src={item.posterUrl}
+          alt={item.nameRu || item.nameEn}
           width={500}
           height={300}
           loading='lazy'
           aria-hidden='true'
           role='presentation'
+          className='main-slide__img'
         />
       </div>
 
-      {trailerId && item?.coverUrl && (
-        <DynamicYoutubePlayer
-          videoId={trailerId}
-          isActive={isActive}
-        />
-      )}
+      <div className='main-slide__info'>
+        <h2 className='main-slide__title'>{item.nameRu || item.nameEn}</h2>
 
-      <div className='hero-slide__content'>
-        <h2 className='hero-slide__name'>
-          {item.nameRu ? item?.nameRu : item?.nameOriginal}
-        </h2>
-
-        <div className='hero-slide__bottom'>
-          <span className='hero-slide__rating'>
-            {item?.ratingImdb ? item?.ratingImdb : '0'}
+        <div className='main-slide__meta'>
+          <span className='main-slide__rating'>
+            {item?.ratingKinopoisk || item?.ratingImdb || '10'}
           </span>
 
-          <p className='hero-slide__text'>{item?.year}</p>
+          <p className='main-slide__year'>{item.year}</p>
 
-          <p className='hero-slide__text hero-slide__text--upper'>
-            {item?.genres[0].genre}
-          </p>
+          <p className='main-slide__genre'>{item.genres?.[0]?.genre || ''}</p>
 
           {item.ratingAgeLimits && (
-            <p className='hero-slide__text'>
-              {removeAgeString(item.ratingAgeLimits)}
+            <p className='main-slide__age'>
+              {removeAgeString(item.ratingAgeLimits)}+
             </p>
           )}
         </div>
