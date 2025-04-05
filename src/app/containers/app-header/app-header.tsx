@@ -1,18 +1,17 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import cl from './app-header.module.scss';
-import { LINKS } from '@/app/shared/constants/links';
+import Image from 'next/image';
+
+import './app-header.scss';
 import { AuthLink } from '@/app/components/auth-link/auth-link';
 import { HeaderNavigation } from '@/app/containers/app-header/elems/header-navigation';
-import { moviesApi } from '@/app/shared/api/movies';
 
 export const AppHeader = () => {
   return (
-    <header className={cl.header}>
+    <header className='header'>
       <div className='container'>
-        <div className={cl.header__wrapper}>
-          <div className={cl.header__row}>
-            <Link href={LINKS.home()}>
+        <div className='header__wrapper'>
+          <div className='header__row'>
+            <Link href='/'>
               <Image
                 src='/images/logo/logo.svg'
                 width={44}

@@ -1,20 +1,4 @@
-.header {
-  padding: 16px 0;
-
-  &__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  &__row {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-}
-
-.navigation {
+.header-navigation {
   position: fixed;
   bottom: 20px;
   left: 50%;
@@ -59,7 +43,7 @@
     color: var(--foreground);
     font-size: 14px;
 
-    &_active {
+    &--active {
       color: var(--primary);
       fill: var(--primary);
     }

@@ -1,5 +1,5 @@
 'use client';
-import cl from '@/app/containers/app-header/app-header.module.scss';
+import './header-navigation.scss';
 import { cn } from '@/app/shared/utils/cn';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -11,14 +11,14 @@ export const HeaderNavigation = () => {
   const pathname = usePathname();
 
   return (
-    <nav className={cl.navigation}>
-      <ul className={cl.navigation__list}>
-        {LINKS.map((nav, index) => (
+    <nav className='header-navigation'>
+      <ul className='header-navigation__list'>
+        {LINKS.navigation.map((nav, index) => (
           <li key={nav.pathname + index}>
             <Link
               className={cn(
-                cl.navigation__link,
-                pathname === nav.pathname ? cl.navigation__link_active : '',
+                'header-navigation__link',
+                pathname === nav.pathname && 'header-navigation__link--active',
               )}
               href={nav.pathname}
             >
