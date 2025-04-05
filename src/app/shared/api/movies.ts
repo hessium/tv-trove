@@ -1,8 +1,12 @@
 import { apiRequest } from '@/app/shared/api/api-request';
-import { FilmsResponse, TrailerResponse } from '@/app/shared/types/films';
+import {
+  DetailFilm,
+  FilmsResponse,
+  TrailerResponse,
+} from '@/app/shared/types/films';
 
 export const moviesApi = {
-  film: (id: number) =>
+  film: (id: number): Promise<DetailFilm> =>
     apiRequest({
       url: `/films/${id}`,
     }),
