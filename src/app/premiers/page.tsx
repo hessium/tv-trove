@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { InDevelopment } from '@/app/components/in-development/in-development';
 
 export const metadata: Metadata = {
   title: 'TV Trove - тв шоу!',
@@ -6,5 +7,5 @@ export const metadata: Metadata = {
   keywords: ['tv', 'movies', 'serial'],
 };
 export default function Page() {
-  return <div>TV Show</div>;
+  return <InDevelopment />;
 }

@@ -1,0 +1,23 @@
+.in-development {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--primary);
+
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  &__text {
+    max-width: 400px;
+    line-height: 1.5;
+  }
+} 

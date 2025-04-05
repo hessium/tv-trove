@@ -1,3 +1,5 @@
+import { InDevelopment } from '@/app/components/in-development/in-development';
+
 export default function Page() {
-  return <div>Auth</div>;
+  return <InDevelopment />;
 }
