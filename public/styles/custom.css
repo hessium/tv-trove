@@ -1,5 +1,6 @@
 html, body, #__next {
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 body {
@@ -9,7 +10,6 @@ body {
     display: flex;
     font-size: 14px;
     flex-direction: column;
-    overflow-x: hidden;
 }
 
 #__next {
