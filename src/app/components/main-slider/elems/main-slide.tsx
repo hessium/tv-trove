@@ -1,5 +1,8 @@
-import { Film } from '@/app/shared/types/films';
-import { removeAgeString } from '@/app/shared/utils/remove-age-string';
+import Image from 'next/image';
+
+import { removeAgeString } from '@/shared/utils/remove-age-string';
+import { Film } from '@/shared/types/films';
+
 
 interface MainSlideProps {
   item: Film;
@@ -9,20 +12,20 @@ export const MainSlide = ({ item }: MainSlideProps) => {
   return (
     <div className='main-slide'>
       <div className='main-slide__cover'>
-        <img
+        <Image
           src={item.posterUrl}
-          alt={item.nameRu || item.nameEn}
+          alt={item.nameRu || item.nameOriginal || item.nameEn}
           width={500}
           height={300}
-          loading='lazy'
           aria-hidden='true'
           role='presentation'
           className='main-slide__img'
+          priority={true}
         />
       </div>
 
       <div className='main-slide__info'>
-        <h2 className='main-slide__title'>{item.nameRu || item.nameEn}</h2>
+        <h2 className='main-slide__title'>{item.nameRu || item.nameOriginal || item.nameEn}</h2>
 
         <div className='main-slide__meta'>
           <span className='main-slide__rating'>

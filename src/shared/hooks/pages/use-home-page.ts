@@ -1,5 +1,5 @@
-import { moviesApi } from '@/app/shared/api/movies';
-import { FilmsResponse } from '@/app/shared/types/films';
+import { moviesApi } from '@/shared/api/movies';
+import { FilmsResponse } from '@/shared/types/films';
 
 export interface HomePageData {
   topPopular: FilmsResponse;

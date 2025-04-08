@@ -1,6 +1,8 @@
 'use client';
-import { Film } from '@/app/shared/types/films';
+
+import { Film } from '@/shared/types/films';
 import { MainSliderDynamic } from '@/app/components/main-slider/main-slider.dynamic';
+
 
 interface MainSliderProps {
   list: Film[] | undefined;

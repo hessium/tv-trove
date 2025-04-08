@@ -1,11 +1,12 @@
 'use client';
 import './header-navigation.scss';
-import { cn } from '@/app/shared/utils/cn';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Icon } from '@/app/shared/ui/icon/icon';
-import { AnyIconName } from '@/app/shared/ui/icon/icon';
-import { LINKS } from '@/app/shared/constants/links';
+import { Icon } from '@/shared/ui/icon/icon';
+import { AnyIconName } from '@/shared/ui/icon/icon';
+import { LINKS } from '@/shared/constants/links';
+import { cn } from '@/shared/utils/cn';
 
 export const HeaderNavigation = () => {
   const pathname = usePathname();

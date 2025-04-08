@@ -1,4 +1,4 @@
-import { BASE_URL } from '@/app/shared/api/api-request';
+import { BASE_URL } from '@/shared/api/api-request';
 
 export const parseApiUrl = (
   url: string,

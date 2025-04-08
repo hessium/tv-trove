@@ -1,6 +1,6 @@
-import { cookier } from '@/app/shared/utils/cookier';
-import { COOKIES } from '@/app/shared/constants/cookies';
-import { parseApiUrl } from '@/app/shared/utils/parse-api-url';
+import { cookier } from '@/shared/utils/cookier';
+import { COOKIES } from '@/shared/constants/cookies';
+import { parseApiUrl } from '@/shared/utils/parse-api-url';
 
 interface ApiRequestProps extends RequestInit {
   url: string;
@@ -61,6 +61,7 @@ export const apiRequest = async ({
     }
 
     return responseData;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return {
       data: null,

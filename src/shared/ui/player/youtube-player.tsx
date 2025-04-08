@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import YouTube, { YouTubeProps } from 'react-youtube';
+import YouTube, { YouTubeProps, YouTubePlayer } from 'react-youtube';
 import './youtube-player.scss';
 
 interface PlayerProps {
@@ -16,26 +16,24 @@ export const YoutubePlayer = ({
   isActive = false,
 }: PlayerProps) => {
   const [hasError, setHasError] = useState(false);
-  const [player, setPlayer] = useState<any>(null);
+  const [player, setPlayer] = useState<YouTubePlayer | null>(null);
 
-  const opts = {
-    height: { height },
-    width: { width },
+  const opts: YouTubeProps['opts'] = {
+    height,
+    width,
     playerVars: {
       autoplay: 0,
       controls: 0,
     },
-    playing: false,
-    muted: true,
   };
 
   useEffect(() => {
     if (hasError) return;
     if (player) {
       if (isActive) {
-        player.playVideo();
+        player?.playVideo();
       } else {
-        player.stopVideo();
+        player?.stopVideo();
       }
     }
   }, [isActive, player, hasError]);

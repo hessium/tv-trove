@@ -1,9 +1,9 @@
-import { apiRequest } from '@/app/shared/api/api-request';
+import { apiRequest } from '@/shared/api/api-request';
 import {
   DetailFilm,
   FilmsResponse,
   TrailerResponse,
-} from '@/app/shared/types/films';
+} from '@/shared/types/films';
 
 export const moviesApi = {
   film: (id: number): Promise<DetailFilm> =>

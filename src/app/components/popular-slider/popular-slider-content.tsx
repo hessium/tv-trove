@@ -5,10 +5,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './popular-slider.scss';
 
+import Image from 'next/image';
 import Link from 'next/link';
-import { Film } from '@/app/shared/types/films';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
+import { Film } from '@/shared/types/films';
+
 
 interface PopularSliderContentProps {
   title: string;
@@ -37,17 +39,17 @@ const PopularSliderContent = ({ list, title }: PopularSliderContentProps) => {
               aria-label={`Перейти к фильму ${item.nameRu}`}
             >
               <div className='popular-slider__img'>
-                <img
+                <Image
                   src={item.posterUrl}
-                  alt={item.nameRu || item.nameEn}
+                  alt={item.nameRu || item.nameOriginal || item.nameEn}
                   width={300}
                   height={500}
-                  loading='lazy'
                   aria-hidden='true'
                   role='presentation'
+                  priority={false}
                 />
               </div>
-              <h3>{item.nameRu || item.nameEn}</h3>
+              <h3>{item.nameRu || item.nameOriginal || item.nameEn}</h3>
             </Link>
           </SwiperSlide>
         ))}

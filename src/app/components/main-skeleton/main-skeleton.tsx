@@ -1,6 +1,6 @@
 import './main-skeleton.scss';
-import { Skeleton } from '@/app/shared/ui/skeleton/skeleton';
 import { GenerateSkeleton } from '@/app/components/generate-skeleton/generate-skeleton';
+import { Skeleton } from '@/shared/ui/skeleton/skeleton';
 
 export const MainSkeleton = () => {
   return (

@@ -13,7 +13,7 @@ const nextConfig = {
           group: true,
           fileName: '{name}.{hash:8}.svg',
           metadata: {
-            path: 'src/app/shared/types/icon.ts',
+            path: 'src/shared/types/icon.ts',
             runtime: {
               viewBox: true,
             },
@@ -23,6 +23,17 @@ const nextConfig = {
     }
 
     return config;
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'kinopoiskapiunofficial.tech',
+        port: '',
+        pathname: '/images/posters/**',
+        search: '',
+      },
+    ],
   },
 };
 

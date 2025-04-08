@@ -11,12 +11,13 @@ import 'swiper/css/autoplay';
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Autoplay, FreeMode, Thumbs } from 'swiper/modules';
-import { Film } from '@/app/shared/types/films';
 
 import { MainSlide } from '@/app/components/main-slider/elems/main-slide';
 import { ThumbnailSlide } from '@/app/components/main-slider/elems/thumbnail-slide';
+import { Film } from '@/shared/types/films';
 
 import './main-slider.scss';
+
 
 interface MainSliderProps {
   list: Film[] | undefined;

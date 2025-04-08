@@ -1,6 +1,9 @@
 'use client';
+import Image from 'next/image';
+
 import './movie-card.scss';
-import { DetailFilm } from '@/app/shared/types/films';
+import { DetailFilm } from '@/shared/types/films';
+
 
 interface MovieCardProps {
   movies: DetailFilm;
@@ -17,7 +20,7 @@ export const MovieCard = ({ movies }: MovieCardProps) => {
         <div className='movie-card__wrapper'>
           <div className='movie-card__media'>
             <div className='movie-card__poster'>
-              <img
+              <Image
                 src={movies?.posterUrl}
                 alt={movies.nameRu ? movies.nameRu : ''}
                 className='movie-card__image'

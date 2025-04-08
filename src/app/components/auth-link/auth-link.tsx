@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Icon } from '@/app/shared/ui/icon/icon';
-import { LINKS } from '@/app/shared/constants/links';
+import { Icon } from '@/shared/ui/icon/icon';
+import { LINKS } from '@/shared/constants/links';
 
 export const AuthLink = () => {
   const isAuthenticated = false;

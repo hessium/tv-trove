@@ -5,9 +5,3 @@ export interface ApiResponse<T> {
   error: boolean;
   status: number;
 }
-
-export interface ApiResponseNew<T = unknown> {
-  data: T;
-  error: boolean;
-  status: number;
-}

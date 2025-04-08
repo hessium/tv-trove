@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
-import getQueryClient from '@/app/shared/utils/get-query-client';
+
+import getQueryClient from '@/shared/utils/get-query-client';
+import { useHomePage } from '@/shared/hooks/pages/use-home-page';
 import { PopularSlider } from '@/app/components/popular-slider/popular-slider';
-import { useHomePage } from '@/app/shared/hooks/pages/use-home-page';
 import { MainSlider } from '@/app/components/main-slider/main-slider';
+
+
 
 export const metadata: Metadata = {
   title: 'TV Trove',
@@ -19,6 +22,7 @@ export default async function Page() {
     queryFn: useHomePage,
   });
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const data = await useHomePage();
 
   const dehydratedState = dehydrate(queryClient);

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { moviesApi } from '@/app/shared/api/movies';
 import { MovieCard } from '@/app/components/movie-card/movie-card';
+import { moviesApi } from '@/shared/api/movies';
 
 type Props = {
   params: Promise<{ slug: string }>;

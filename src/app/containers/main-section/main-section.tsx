@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import { cn } from '@/app/shared/utils/cn';
+import { cn } from '@/shared/utils/cn';
 
 interface MainSectionProps extends HTMLAttributes<HTMLElement> {
   enabledContainer?: boolean;

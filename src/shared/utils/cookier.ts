@@ -1,4 +1,4 @@
-import { COOKIES } from '@/app/shared/constants/cookies';
+import { COOKIES } from '@/shared/constants/cookies';
 
 export interface SetCookieProps {
   name: string;
@@ -33,7 +33,6 @@ class Cookier {
       }
     }
 
-    // eslint-disable-next-line unicorn/no-document-cookie
     document.cookie = updatedCookie;
   };
 

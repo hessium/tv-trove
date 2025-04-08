@@ -1,5 +1,6 @@
-import { IconProps } from '@/app/shared/ui/icon/icon';
-import { SPRITES_META, SpritesMap } from '@/app/shared/types/icon';
+import { SPRITES_META, SpritesMap } from '@/shared/types/icon';
+import { IconProps } from '@/shared/ui/icon/icon';
+
 
 export const getIconMeta = <Key extends keyof SpritesMap>({
   name,

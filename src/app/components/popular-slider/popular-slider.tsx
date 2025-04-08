@@ -1,5 +1,5 @@
 'use client';
-import { Film } from '@/app/shared/types/films';
+import { Film } from '@/shared/types/films';
 import { PopularSliderDynamic } from '@/app/components/popular-slider/popular-slider.dynamic';
 
 interface PopularSliderProps {

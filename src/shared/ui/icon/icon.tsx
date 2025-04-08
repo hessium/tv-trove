@@ -1,7 +1,8 @@
 import { forwardRef, SVGProps, useMemo } from 'react';
-import { SpritesMap } from '@/app/shared/types/icon';
-import { getIconMeta } from '@/app/shared/utils/get-icon-meta';
-import { cn } from '@/app/shared/utils/cn';
+import { SpritesMap } from '@/shared/types/icon';
+import { getIconMeta } from '@/shared/utils/get-icon-meta';
+import { cn } from '@/shared/utils/cn';
+
 
 export type AnyIconName = {
   [Key in keyof SpritesMap]: IconName<Key>;
