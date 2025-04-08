@@ -4,6 +4,7 @@ html, body, #__next {
 }
 
 body {
+    width: 100dvw;
     color: var(--foreground);
     background: var(--background);
     font-family: Montserrat, sans-serif;
