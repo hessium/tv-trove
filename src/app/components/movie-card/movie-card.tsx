@@ -27,13 +27,13 @@ export const MovieCard = memo(({ movies }: MovieCardProps) => {
 
   useEffect(() => {
     if (!movies) return;
-    
+
     const fetchTrailer = async () => {
       setIsLoadingTrailer(true);
       try {
         const trailer = await moviesApi.videos(movies.kinopoiskId);
-        const trailerData = trailer.items.filter((item) => item.site === "YOUTUBE");
-        
+        const trailerData = trailer.items.filter((item) => item.site === 'YOUTUBE');
+
         if (trailerData.length > 0) {
           const videoId = getYoutubeVideoId(trailerData[0].url);
           if (typeof videoId === 'string') {
@@ -80,15 +80,16 @@ export const MovieCard = memo(({ movies }: MovieCardProps) => {
               />
             </div>
 
-            <div className="movie-card__trailer">
-              {isLoadingTrailer ? (
-                <div className="movie-card__trailer-loading">
-                  <Spinner />
-                </div>
-              ) : trailerId ? (
+            {isLoadingTrailer ? (
+              <div className="movie-card__trailer-loading">
+                <Spinner />
+              </div>
+            ) : trailerId ? (
+              <div className="movie-card__trailer">
                 <YoutubePlayer videoId={trailerId} />
-              ) : null}
-            </div>
+              </div>
+            ) : null}
+
           </div>
 
           <div className="movie-card__info">

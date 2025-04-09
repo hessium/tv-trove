@@ -2,8 +2,9 @@
   height: 100%;
   background: var(--background);
   overflow: hidden;
-  animation: pulse 1.5s ease-in-out 0.5s infinite;
+  animation: pulse 2s linear 0s infinite alternate-reverse forwards;
   flex-shrink: 0;
+  position: absolute;
 
   &__image {
     width: 100%;
@@ -29,13 +30,14 @@
 }
 
 @keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
+  0%,
+  50%,
   100% {
     opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
   }
 }

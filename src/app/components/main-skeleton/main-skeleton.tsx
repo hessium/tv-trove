@@ -13,11 +13,11 @@ export const MainSkeleton = () => {
       </div>
       <div className='main-skeleton__list'>
         <GenerateSkeleton length={20}>
-          <Skeleton
-            widthWrapper={'150px'}
-            height={'200px'}
-            hideTitle={true}
-          />
+          <div className="main-skeleton__list-item">
+            <Skeleton
+              hideTitle={true}
+            />
+          </div>
         </GenerateSkeleton>
       </div>
     </div>

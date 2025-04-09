@@ -38,3 +38,14 @@ export const moviesApi = {
       url: `/films/premieres?year=${premiersDate.year}&month=${premiersDate.month}`,
     }),
 };
+
+export const movieKeys = {
+  all: ['movies'] as const,
+  topPopular: () => [...movieKeys.all, 'topPopular'] as const,
+  topFilms: () => [...movieKeys.all, 'topFilms'] as const,
+  topSeries: () => [...movieKeys.all, 'topSeries'] as const,
+  topAnimation: () => [...movieKeys.all, 'topAnimation'] as const,
+  detail: (id: number) => [...movieKeys.all, 'detail', id] as const,
+  videos: (id: number) => [...movieKeys.all, 'videos', id] as const,
+  premiers: (year: number, month: string) => [...movieKeys.all, 'premiers', year, month] as const,
+};

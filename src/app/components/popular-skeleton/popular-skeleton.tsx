@@ -6,10 +6,9 @@ export const PopularSkeleton = () => {
   return (
     <div className='popular-skeleton'>
       <GenerateSkeleton>
-        <Skeleton
-          widthWrapper={'200px'}
-          height={'250px'}
-        />
+        <div className="popular-skeleton__item">
+          <Skeleton />
+        </div>
       </GenerateSkeleton>
     </div>
   );

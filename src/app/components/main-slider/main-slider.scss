@@ -52,6 +52,19 @@
   position: relative;
   width: 100%;
   height: 100%;
+  padding-bottom: 87%;
+
+  @media screen and (min-width: 425px) {
+    padding-bottom: 70%;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 66%;
+  }
+
+  @media screen and (min-width: 960px) {
+    padding-bottom: 66vh;
+  }
 
   &__cover {
     width: 100%;
@@ -126,22 +139,6 @@
     padding: 5px 7px;
     border-radius: 5px;
     background-color: hsla(0, 0%, 100%, .1);
-  }
-
-  @media screen and (min-width: 360px) {
-    padding-bottom: 87%;
-  }
-
-  @media screen and (min-width: 425px) {
-    padding-bottom: 70%;
-  }
-
-  @media screen and (min-width: 768px) {
-    padding-bottom: 66%;
-  }
-
-  @media screen and (min-width: 960px) {
-    padding-bottom: 66vh;
   }
 
   &:before {

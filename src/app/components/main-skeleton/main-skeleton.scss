@@ -7,16 +7,32 @@
   &__list {
     display: flex;
     gap: 10px;
+    padding-left: 1rem;
+
+    &-item {
+      flex-shrink: 0;
+      width: 150px;
+      height: 200px;
+      position: relative;
+    }
   }
 
   &__item {
     width: 100%;
-    height: auto;
-    aspect-ratio:  375 / 325;
+    height: 100%;
+    padding-bottom: 87%;
+    position: relative;
 
+    @media screen and (min-width: 425px) {
+      padding-bottom: 70%;
+    }
 
-    @media (min-width: 1320px) {
-      aspect-ratio: 1920 / 615;
+    @media screen and (min-width: 768px) {
+      padding-bottom: 66%;
+    }
+
+    @media screen and (min-width: 960px) {
+      padding-bottom: 66vh;
     }
   }
 }
