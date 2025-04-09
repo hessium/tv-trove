@@ -4,6 +4,7 @@ import { BaseMeta } from '@/app/components/base-meta/base-meta';
 import { MainLayout } from '@/app/containers/main-layout/main-layout';
 
 import '../../public/styles/app.css';
+import { AppFooter } from '@/app/containers/app-footer/app-footer';
 
 export default function RootLayout({
   children,
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body>
         <QueryProvider>
           <MainLayout>{children}</MainLayout>
+          <AppFooter/>
         </QueryProvider>
       </body>
     </html>

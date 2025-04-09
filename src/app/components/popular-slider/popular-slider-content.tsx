@@ -1,16 +1,20 @@
 'use client';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import './popular-slider.scss';
+
 
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
+
 import { Film } from '@/shared/types/films';
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+import './popular-slider.scss';
 
 interface PopularSliderContentProps {
   title: string;

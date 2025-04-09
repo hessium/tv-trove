@@ -14,7 +14,7 @@ export const MainSkeleton = () => {
       <div className='main-skeleton__list'>
         <GenerateSkeleton length={20}>
           <Skeleton
-            width={'150px'}
+            widthWrapper={'150px'}
             height={'200px'}
             hideTitle={true}
           />

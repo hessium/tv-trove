@@ -27,7 +27,9 @@
   }
 
   &__thumbnails {
-    padding: 0 0 0 1rem;
+    &.swiper {
+      padding-left: 1rem;
+    }
   }
 
   &__thumbnail {

@@ -1,26 +1,29 @@
 import './skeleton.scss';
 
 interface SkeletonProps {
-  width?: string;
   height?: string;
+  widthWrapper?: string;
+  heightWrapper?: string;
   hideTitle?: boolean;
 }
+
 export const Skeleton = ({
-  width = '100%',
-  height = '100%',
-  hideTitle = false,
-}: SkeletonProps) => {
+                           heightWrapper = '100%',
+                           widthWrapper = '100%',
+                           height = '100%',
+                           hideTitle = false
+                         }: SkeletonProps) => {
   return (
     <div
-      className='skeleton'
-      style={{ width: width }}
+      className="skeleton"
+      style={{ width: widthWrapper, height: heightWrapper }}
     >
       <div
-        className='skeleton__image'
+        className="skeleton__image"
         style={{ height: height }}
       />
-      <div className='skeleton__content'>
-        {!hideTitle && <div className='skeleton__title' />}
+      <div className="skeleton__content">
+        {!hideTitle && <div className="skeleton__title" />}
       </div>
     </div>
   );

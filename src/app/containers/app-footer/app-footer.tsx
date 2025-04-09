@@ -1,5 +1,4 @@
+import './app-footer.scss'
 export const AppFooter = () => (
-  <footer className='footer'>
-    <div className='container'>Footer</div>
-  </footer>
+  <footer className='footer'></footer>
 );

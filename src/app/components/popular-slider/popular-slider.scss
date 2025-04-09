@@ -21,13 +21,9 @@
   }
 
   &__item {
-    width: 150px;
+    width: 200px;
     transition: all .3s linear;
     margin-right: 32px;
-
-    @media (min-width: 980px) {
-      width: 200px;
-    }
 
     @media (hover: hover) {
       &:hover {
