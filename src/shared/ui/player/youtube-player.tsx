@@ -1,65 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import YouTube, { YouTubeProps, YouTubePlayer } from 'react-youtube';
+import React, { useState } from 'react';
 import './youtube-player.scss';
 
 interface PlayerProps {
-  videoId: string;
-  width?: string;
-  height?: string;
-  isActive?: boolean;
+  videoId: string | undefined;
 }
 
 export const YoutubePlayer = ({
   videoId,
-  width = '500',
-  height = '300',
-  isActive = false,
 }: PlayerProps) => {
   const [hasError, setHasError] = useState(false);
-  const [player, setPlayer] = useState<YouTubePlayer | null>(null);
 
-  const opts: YouTubeProps['opts'] = {
-    height,
-    width,
-    playerVars: {
-      autoplay: 0,
-      controls: 0,
-    },
-  };
-
-  useEffect(() => {
-    if (hasError) return;
-    if (player) {
-      if (isActive) {
-        player?.playVideo();
-      } else {
-        player?.stopVideo();
-      }
-    }
-  }, [isActive, player, hasError]);
-
-  const onError: YouTubeProps['onError'] = () => {
-    setHasError(true);
-  };
-
-  const onReady: YouTubeProps['onReady'] = (event) => {
-    setPlayer(event.target);
-    if (isActive) {
-      event.target.playVideo();
-    }
-  };
-
-  if (hasError) {
+  if (hasError || !videoId) {
     return null;
   }
 
+  const src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=0&controls=1&modestbranding=1&rel=0&showinfo=0&fs=1&origin=${window.location.origin}&enablejsapi=0&playsinline=1&iv_load_policy=3&cc_load_policy=0&disablekb=0&hl=ru`;
+
   return (
-    <YouTube
-      videoId={videoId}
-      opts={opts}
-      onError={onError}
-      onReady={onReady}
-      className='youtube-player'
-    />
+    <div className="youtube-player-wrapper">
+      <iframe
+        src={src}
+        className="youtube-player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        onError={() => setHasError(true)}
+      />
+    </div>
   );
 };
