@@ -5,11 +5,12 @@ import './popular-skeleton.scss';
 export const PopularSkeleton = () => {
   return (
     <div className='popular-skeleton'>
-      <GenerateSkeleton>
+      <h2 className='popular-skeleton__title'><Skeleton /></h2>
+     <div className='popular-skeleton__list'> <GenerateSkeleton>
         <div className="popular-skeleton__item">
           <Skeleton />
         </div>
-      </GenerateSkeleton>
+      </GenerateSkeleton></div>
     </div>
   );
 };

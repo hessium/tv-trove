@@ -1,6 +1,6 @@
 import { moviesApi, movieKeys } from '@/shared/api/movies';
 import { FilmsResponse } from '@/shared/types/films';
-import { useQueries, useQuery } from '@tanstack/react-query';
+import {  useQuery } from '@tanstack/react-query';
 
 export interface HomePageData {
   topPopular: FilmsResponse;
@@ -26,32 +26,30 @@ export async function getHomePageData(): Promise<HomePageData> {
 }
 
 
-export function useHomePage() {
+export function useTopPopular() {
   return useQuery({
-    queryKey: ['home-page'],
-    queryFn: getHomePageData,
+    queryKey: movieKeys.topPopular(),
+    queryFn: moviesApi.topPopular,
   });
 }
 
-export function useHomePageQueries() {
-  return useQueries({
-    queries: [
-      {
-        queryKey: movieKeys.topPopular(),
-        queryFn: moviesApi.topPopular,
-      },
-      {
-        queryKey: movieKeys.topFilms(),
-        queryFn: moviesApi.topFilms,
-      },
-      {
-        queryKey: movieKeys.topSeries(),
-        queryFn: moviesApi.topSeries,
-      },
-      {
-        queryKey: movieKeys.topAnimation(),
-        queryFn: moviesApi.topAnimation,
-      },
-    ],
+export function useTopFilms() {
+  return useQuery({
+    queryKey: movieKeys.topFilms(),
+    queryFn: moviesApi.topFilms,
+  });
+}
+
+export function useTopSeries() {
+  return useQuery({
+    queryKey: movieKeys.topSeries(),
+    queryFn: moviesApi.topSeries,
+  });
+}
+
+export function useTopAnimation() {
+  return useQuery({
+    queryKey: movieKeys.topAnimation(),
+    queryFn: moviesApi.topAnimation,
   });
 }

@@ -1,10 +1,9 @@
 'use client';
 
-
-
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 
@@ -16,12 +15,16 @@ import 'swiper/css/pagination';
 
 import './popular-slider.scss';
 
+
 interface PopularSliderContentProps {
   title: string;
   list?: Film[];
 }
 
-const PopularSliderContent = ({ list, title }: PopularSliderContentProps) => {
+export const PopularSlider = ({ list, title }: PopularSliderContentProps) => {
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
+  
   if (list === undefined || list.length === 0) return null;
 
   return (
@@ -32,7 +35,36 @@ const PopularSliderContent = ({ list, title }: PopularSliderContentProps) => {
         modules={[Navigation, Pagination, A11y]}
         slidesPerView={'auto'}
         className='popular-slider'
+        navigation={{
+          prevEl: navigationPrevRef.current,
+          nextEl: navigationNextRef.current,
+        }}
+
+        onSwiper={(swiper) => {
+          setTimeout(() => {
+            if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
+              swiper.params.navigation.prevEl = navigationPrevRef.current;
+              swiper.params.navigation.nextEl = navigationNextRef.current;
+
+              swiper.navigation.destroy();
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }
+          });
+        }}
       >
+        <div className="popular-slider__navigation">
+          <button  ref={navigationPrevRef} 
+          className='popular-slider__navigation-button popular-slider__navigation-prev' 
+          aria-label="Предыдущий слайд">
+            <span aria-hidden="true">❮</span>
+          </button>
+          <button ref={navigationNextRef}
+           className='popular-slider__navigation-button popular-slider__navigation-next' 
+           aria-label="Следующий слайд">
+            <span aria-hidden="true">❯</span>
+          </button>
+        </div>
         {list.map((item: Film) => (
           <SwiperSlide
             className='popular-slider__item'
@@ -61,5 +93,3 @@ const PopularSliderContent = ({ list, title }: PopularSliderContentProps) => {
     </section>
   );
 };
-
-export { PopularSliderContent };

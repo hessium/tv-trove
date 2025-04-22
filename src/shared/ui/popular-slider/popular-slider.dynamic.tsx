@@ -3,7 +3,7 @@ import { PopularSkeleton } from '@/app/components/popular-skeleton/popular-skele
 
 export const PopularSliderDynamic = dynamic(
   () =>
-    import('./popular-slider-content').then((mod) => mod.PopularSliderContent),
+    import('./popular-slider').then((mod) => mod.PopularSlider),
   {
     loading: () => <PopularSkeleton />,
     ssr: false,
