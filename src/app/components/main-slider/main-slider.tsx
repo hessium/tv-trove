@@ -19,6 +19,8 @@ import { Film } from '@/shared/types/api/films';
 
 import './main-slider.scss';
 import { MainSkeleton } from '@/shared/ui/main-skeleton/main-skeleton';
+import { ErrorMessage } from '@/shared/ui/error/error-message';
+import { ApiLimitMessage } from '@/shared/ui/api-limit-message/api-limit-message';
 
 export const MainSlider = () => {
   const { data, isLoading, error } = useTopPopular();
@@ -26,11 +28,11 @@ export const MainSlider = () => {
 
   if (isLoading) return <MainSkeleton />;
 
-  if (error) return <div>Ошибка загрузки популярных фильмов: {error.message}  </div>;
+  if (error) return <ErrorMessage title={`Ошибка загрузки популярных фильмов: ${error.message}`} /> ;
 
-  if (data?.error) return <div>Ошибка загрузки популярных фильмов: {data.error} </div>;
+  if (data?.error && data.status === 402) return <ApiLimitMessage/>;
 
-  if (!data?.data.items?.length) return <></>;
+  if (!data?.data.items?.length) return null;
 
   return (
     <section className='main-slider'>

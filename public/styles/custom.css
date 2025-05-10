@@ -30,10 +30,8 @@ section {
 
 main {
     flex: 1;
+    padding-top: var(--header-height);
 
-    @media (min-width: 768px) {
-        padding-top: 70px;
-    }
 }
 
 .swiper {

@@ -1,0 +1,15 @@
+.error-message {
+  margin: 4rem 0;
+  text-align: center;
+  color: var(--primary);
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  &__desc {
+    font-size: 24px;
+  }
+}

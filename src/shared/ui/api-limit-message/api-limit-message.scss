@@ -1,0 +1,27 @@
+.api-limit-message {
+
+  &__container {
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: 680px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  &__code strong {
+    color: var(--primary);
+  }
+}

@@ -12,7 +12,6 @@ import { REGEXP } from '@/shared/constants/regex';
 import { MainSection } from '@/app/containers/main-section/main-section';
 import { FadeAnimation } from '@/shared/ui/fade-animation/fade-animation';
 
-
 export default function Page() {
   const { methods, mutation,  onSubmit } = useAuthPage();
 
@@ -25,36 +24,38 @@ export default function Page() {
          >
            {() => (
              <>
-               <h1 className='title'>
+
+
+               <h1 className="title">
                  Авторизация
                </h1>
 
                <Input
-                 label='Почта'
-                 name='username'
-                 placeholder='Введите почту'
+                 label="Почта"
+                 name="username"
+                 placeholder="Введите почту"
                  rules={vld().required('Почта').pattern(REGEXP.email)}
                />
 
                <Input
-                 label='Пароль'
-                 name='password'
-                 placeholder='Введите пароль'
+                 label="Пароль"
+                 name="password"
+                 placeholder="Введите пароль"
                  rules={vld().required('Пароль').minLength(6)}
-                 type='password'
+                 type="password"
                />
 
-               <div className='form__footer'>
+               <div className="form__footer">
                  <Button
                    disabled={mutation.isPending}
-                   variant='ghost'
+                   variant="ghost"
                  >
                    <Link href={LINKS.registration}>Зарегистрироваться</Link>
                  </Button>
 
                  <Button
                    isLoading={mutation.isPending}
-                   type='submit'
+                   type="submit"
                  >
                    Войти
                  </Button>

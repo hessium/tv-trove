@@ -10,9 +10,9 @@
     --default-400: #a1a1aa;
     --foreground-text: #18181b;
     --error-color: #dc2626;
+
+    --header-height: 70px;
 }
-
-
 
 @media (max-width <= 1400) {
     :root {

@@ -13,13 +13,12 @@ export const AppHeader = () => {
         <div className="header__wrapper">
           <div className="header__row">
             <FadeAnimation variant="scale" threshold={0} triggerOnce={true}>
-              <Link href="/">
+              <Link className='header__logo' href="/">
                 <Image
-                  src="/images/logo/logo.svg"
-                  width={44}
-                  height={44}
-                  alt="logo tv trove"
+                  fill
                   priority
+                  alt="logo tv trove"
+                  src="/images/logo/logo.svg"
                   blurDataURL={'/images/logo/logo.svg'}
                 />
               </Link>

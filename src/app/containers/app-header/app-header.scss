@@ -4,10 +4,7 @@
   top: 0;
   z-index: 11;
   width: 100%;
-
-  @media (min-width: 768px) {
-    height: 70px;
-  }
+  height: var(--header-height);
 
   &__wrapper {
     display: flex;
@@ -19,6 +16,13 @@
     display: flex;
     align-items: center;
     gap: 30px;
+  }
+
+  &__logo {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    display: block;
   }
 }
 
