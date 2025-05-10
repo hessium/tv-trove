@@ -3,7 +3,7 @@ import {
   DetailFilm,
   FilmsResponse,
   TrailerResponse,
-} from '@/shared/types/films';
+} from '@/shared/types/api/films';
 
 export const moviesApi = {
   film: (id: number): Promise<DetailFilm> =>

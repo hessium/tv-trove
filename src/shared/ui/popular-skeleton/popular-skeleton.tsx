@@ -1,4 +1,4 @@
-import { GenerateSkeleton } from '@/app/components/generate-skeleton/generate-skeleton';
+import { GenerateSkeleton } from '@/shared/ui/generate-skeleton/generate-skeleton';
 import { Skeleton } from '@/shared/ui/skeleton/skeleton';
 
 import './popular-skeleton.scss';

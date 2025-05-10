@@ -1,5 +1,13 @@
 .header {
   padding: 16px 0;
+  position: fixed;
+  top: 0;
+  z-index: 11;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    height: 70px;
+  }
 
   &__wrapper {
     display: flex;

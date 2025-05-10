@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Film } from '@/shared/types/films';
+import { Film } from '@/shared/types/api/films';
 
 interface ThumbnailSlideProps {
   item: Film;

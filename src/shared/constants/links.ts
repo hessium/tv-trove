@@ -21,7 +21,8 @@ export const LINKS = {
       icon: 'tv',
     },
   ],
-
+  home: '/',
   profile: '/profile',
+  registration: '/registration',
   auth: '/auth',
 };

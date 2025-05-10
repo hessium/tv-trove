@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { removeAgeString } from '@/shared/utils/remove-age-string';
-import { Film } from '@/shared/types/films';
+import { Film } from '@/shared/types/api/films';
 
 
 interface MainSlideProps {

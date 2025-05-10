@@ -5,7 +5,12 @@ import { MainLayout } from '@/app/containers/main-layout/main-layout';
 
 import '../../public/styles/app.css';
 import { AppFooter } from '@/app/containers/app-footer/app-footer';
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  description: 'Добро пожаловать на сайт TV Trove!',
+  keywords: ['tv', 'movies', 'serial'],
+};
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -13,11 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <head>
-        <BaseMeta />
-      </head>
-      <body>
-        <QueryProvider>
+    <head>
+      <title>TV Trove</title>
+      <BaseMeta />
+    </head>
+    <body>
+    <QueryProvider>
           <MainLayout>{children}</MainLayout>
           <AppFooter/>
         </QueryProvider>

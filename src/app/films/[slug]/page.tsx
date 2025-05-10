@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { MovieCard } from '@/app/components/movie-card/movie-card';
+import { MovieCard } from '@/shared/ui/movie-card/movie-card';
 import { moviesApi } from '@/shared/api/movies';
 
 type Props = {

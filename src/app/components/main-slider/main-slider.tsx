@@ -15,18 +15,22 @@ import { A11y, Autoplay, FreeMode, Thumbs } from 'swiper/modules';
 
 import { MainSlide } from '@/app/components/main-slider/elems/main-slide';
 import { ThumbnailSlide } from '@/app/components/main-slider/elems/thumbnail-slide';
-import { Film } from '@/shared/types/films';
+import { Film } from '@/shared/types/api/films';
 
 import './main-slider.scss';
-import { MainSkeleton } from '@/app/components/main-skeleton/main-skeleton';  
+import { MainSkeleton } from '@/shared/ui/main-skeleton/main-skeleton';
 
 export const MainSlider = () => {
   const { data, isLoading, error } = useTopPopular();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   if (isLoading) return <MainSkeleton />;
+
   if (error) return <div>Ошибка загрузки популярных фильмов: {error.message}  </div>;
-  if (!data?.items?.length) return null;
+
+  if (data?.error) return <div>Ошибка загрузки популярных фильмов: {data.error} </div>;
+
+  if (!data?.data.items?.length) return <></>;
 
   return (
     <section className='main-slider'>
@@ -45,7 +49,7 @@ export const MainSlider = () => {
             disableOnInteraction: false,
           }}
         >
-          {data.items.map((item: Film) => (
+          {data.data.items.map((item: Film) => (
             <SwiperSlide
               className='main-slider__slide'
               key={item.kinopoiskId}
@@ -73,7 +77,7 @@ export const MainSlider = () => {
           slidesPerView={'auto'}
           className='main-slider__thumbnails'
         >
-          {data.items.map((item: Film) => (
+          {data.data.items.map((item: Film) => (
             <SwiperSlide
               className='main-slider__thumbnail'
               key={`${item.kinopoiskId}-thumb`}

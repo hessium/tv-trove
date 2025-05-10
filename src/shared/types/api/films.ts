@@ -90,7 +90,12 @@ export interface Film {
   ratingAgeLimits: string;
 }
 
-export interface FilmsResponse {
+export interface Films {
   total: number;
   items: Film[];
+}
+export interface FilmsResponse {
+  data : Films,
+  error: boolean,
+  status: number
 }

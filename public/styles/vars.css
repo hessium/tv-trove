@@ -5,7 +5,14 @@
     --foreground: #ededed;
     --primary: #FFD700  ;
     --secondary: #9400D3;
+
+    --border-color: #e4e4e7;
+    --default-400: #a1a1aa;
+    --foreground-text: #18181b;
+    --error-color: #dc2626;
 }
+
+
 
 @media (max-width <= 1400) {
     :root {

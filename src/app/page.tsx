@@ -1,25 +1,15 @@
-import type { Metadata } from 'next';
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
 import getQueryClient from '@/shared/utils/get-query-client';
-import { getHomePageData } from '@/shared/hooks/pages/use-home-page';
-import { PopularSerials } from '@/app/components/popular-slider/popular-serials';
+import { PopularSerials } from '@/app/components/popular-serials/popular-serials';
 import { MainSlider } from './components/main-slider/main-slider';
+import { PopularFilms } from '@/app/components/popular-films/popular-serials';
+import { PopularAnimations } from '@/app/components/popular-animations/popular-serials';
 
-export const metadata: Metadata = {
-  title: 'TV Trove',
-  description: 'Добро пожаловать на сайт TV Trove!',
-  keywords: ['tv', 'movies', 'serial'],
-};
+
 
 export default async function Page() {
   const queryClient = getQueryClient();
- 
-  await queryClient.prefetchQuery({
-    queryKey: ['home-page'],
-    queryFn: getHomePageData,
-  });
-
 
   const dehydratedState = dehydrate(queryClient);
 
@@ -31,6 +21,9 @@ export default async function Page() {
 
       <PopularSerials />
 
+      <PopularFilms />
+
+      <PopularAnimations />
     </HydrationBoundary>
   );
 }

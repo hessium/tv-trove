@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { memo, useState, useEffect } from 'react';
 
-import { DetailFilm } from '@/shared/types/films';
+import { DetailFilm } from '@/shared/types/api/films';
 
 
 import { removeAgeString } from '@/shared/utils/remove-age-string';
